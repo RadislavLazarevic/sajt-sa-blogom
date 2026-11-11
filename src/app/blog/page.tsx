@@ -1,5 +1,5 @@
 import type { Metadata } from "next";
-import PostList from "@/components/PostList";
+import PostGrid from "@/components/PostGrid";
 import { getAllPosts } from "@/lib/posts";
 
 export const metadata: Metadata = {
@@ -9,9 +9,9 @@ export const metadata: Metadata = {
 
 export default function BlogPage() {
   return (
-    <div>
+    <div className="w-full px-6 py-12 md:px-14">
       <h1 className="mb-10 text-4xl font-semibold tracking-tight">Blog</h1>
-      <PostList posts={getAllPosts()} />
+      <PostGrid posts={getAllPosts()} />
     </div>
   );
 }

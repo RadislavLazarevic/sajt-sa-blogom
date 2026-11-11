@@ -1,0 +1,69 @@
+---
+title: "Kako koristim AI asistente u programiranju (a da ne prestanem da razmišljam)"
+description: "AI ume da piše kod brže od mene, ali ne zna šta zapravo pravim. Evo kako delim posao sa njim i gde mu ne verujem."
+date: "2026-11-11"
+image: "/post2.jpg"
+tags: ["AI", "Alati"]
+draft: false
+---
+
+Ovaj blog je napravljen uz pomoć AI asistenta. Struktura projekta, stranice, RSS, čak i dizajn kartica koje ste videli na početnoj. To mi je dalo dobar povod da zapišem kako zapravo radim sa takvim alatima, šta mi štedi vreme, a gde budem oprezan.
+
+## AI je saradnik, ne autopilot
+
+Najveća greška koju sam pravio na početku bila je da prepustim asistentu da „samo završi stvar”. Kod bi se pojavio, izgledao uverljivo, i ja bih ga prihvatio bez da ga stvarno pročitam. Problem ne nastaje odmah, nego dve nedelje kasnije, kad treba nešto da promenim u kodu koji ne razumem.
+
+Danas se držim jednog pravila: **ne puštam kod koji ne bih umeo da objasnim nekom drugom.** Ako ne razumem šta neka linija radi, pitam. AI je odličan baš u tome da objasni sopstveni kod.
+
+## Gde mi najviše pomaže
+
+- **Početak projekta.** Postavljanje konfiguracije, strukture foldera i osnovnih stranica je posao koji se ponavlja i koji AI radi brzo i dosledno.
+- **Rad sa nepoznatim alatima.** Kad prvi put koristim neku biblioteku, mnogo je brže da pitam za primer nego da tražim po dokumentaciji, pa onda proverim u dokumentaciji da li je primer tačan.
+- **Dosadne izmene.** Preimenovanje, premeštanje koda, dodavanje istog polja na deset mesta.
+- **Druga glava kod grešaka.** Zalepim poruku o grešci i deo koda, i često dobijem pravac u kom treba da tražim.
+
+## Gde mu ne verujem na reč
+
+AI modeli su učeni na podacima do nekog trenutka, a alati se menjaju brzo. Ovaj sajt koristi novu verziju Next.js-a, i neki obrasci koje bi asistent „po navici” predložio više ne važe. Zato u projektu imam fajl sa uputstvima koji asistentu kaže koju verziju koristim i gde da čita dokumentaciju.
+
+Ostale stvari koje uvek proveravam sam:
+
+1. **Bezbednost.** Sve što dira lozinke, ključeve, korisničke podatke ili prava pristupa.
+2. **Nove zavisnosti.** Svaki paket koji se doda u projekat je kod koji neko drugi održava.
+3. **Logika koja zavisi od mog konkretnog slučaja.** AI ne zna kakvi su moji korisnici niti zašto je neka odluka doneta.
+
+## Dobar zahtev je pola posla
+
+Razlika između lošeg i dobrog rezultata je skoro uvek u tome kako sam objasnio šta hoću. Uporedite:
+
+```text
+Napravi mi listu postova.
+```
+
+i
+
+```text
+Na početnoj stranici, ispod hero sekcije, prikaži poslednjih 8 postova
+kao kartice u mreži od 4 kolone. Svaka kartica ima naslovnu sliku,
+datum i naslov. Slike se nalaze u folderu public/.
+```
+
+Drugi zahtev ostavlja mnogo manje mesta za pogađanje. Pomaže i da se uz zahtev pošalje primer, npr. screenshot dizajna koji vam se sviđa.
+
+## Mali tok rada koji mi odgovara
+
+```ts
+// 1. Opišem šta hoću i zašto
+// 2. Tražim plan pre nego što se bilo šta menja
+// 3. Pregledam plan i ispravim pogrešne pretpostavke
+// 4. Pustim izmene, pa ih pročitam
+// 5. Pokrenem build i pogledam rezultat u browseru
+```
+
+Korak 2 je najvažniji. Kad AI prvo napiše plan, odmah vidim da li me je razumeo, i greške ispravljam dok su još jeftine.
+
+## Zaključak
+
+AI asistent mi ne oduzima posao, nego menja njegov oblik: manje kucam, više čitam, proveravam i donosim odluke. Mislim da je to dobra trampa, pod uslovom da ne prestanem da razmišljam o tome šta zapravo pravim.
+
+U narednim postovima pisaću detaljnije o tome kako je ovaj sajt nastao, korak po korak.

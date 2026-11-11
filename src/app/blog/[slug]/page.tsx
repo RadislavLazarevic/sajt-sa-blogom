@@ -1,4 +1,5 @@
 import type { Metadata } from "next";
+import Image from "next/image";
 import Link from "next/link";
 import { notFound } from "next/navigation";
 import { formatDate } from "@/lib/format";
@@ -25,6 +26,7 @@ export async function generateMetadata({
       description: post.description,
       publishedTime: post.date,
       url: `/blog/${post.slug}`,
+      images: post.image ? [post.image] : undefined,
     },
   };
 }
@@ -37,12 +39,25 @@ export default async function PostPage({ params }: PageProps<"/blog/[slug]">) {
   const { default: Content } = await import(`@/content/posts/${slug}.mdx`);
 
   return (
-    <article>
+    <article className="mx-auto w-full max-w-3xl px-6 py-12">
       <header className="mb-10">
-        <time dateTime={post.date} className="text-sm text-zinc-500">
-          {formatDate(post.date)}
-        </time>
+        <p className="text-sm text-zinc-500">
+          <time dateTime={post.date}>{formatDate(post.date)}</time> · {post.readingMinutes} min
+          čitanja
+        </p>
         <h1 className="mt-2 text-4xl font-semibold tracking-tight">{post.title}</h1>
+        {post.image && (
+          <div className="relative mt-8 aspect-[16/9] overflow-hidden rounded-sm bg-[#10142a]">
+            <Image
+              src={post.image}
+              alt=""
+              fill
+              priority
+              sizes="(min-width: 768px) 720px, 100vw"
+              className="object-cover"
+            />
+          </div>
+        )}
       </header>
       <div className="prose prose-zinc max-w-none dark:prose-invert">
         <Content />

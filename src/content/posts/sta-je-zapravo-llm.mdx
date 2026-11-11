@@ -1,0 +1,60 @@
+---
+title: "Šta je zapravo veliki jezički model? Objašnjenje za programere"
+description: "ChatGPT, Claude i slični alati deluju kao magija. Ispod haube je predviđanje sledećeg tokena, i kad to razumete, jasnije vidite i šta umeju i gde greše."
+date: "2026-11-11"
+image: "/post3.jpg"
+tags: ["AI", "LLM"]
+draft: false
+---
+
+U [prethodnom postu](/blog/ai-asistenti-u-programiranju) pisao sam o tome kako koristim AI asistente. Ovde idem korak unazad: šta je uopšte taj „model” sa kojim razgovaramo, i zašto se ponaša baš tako kako se ponaša.
+
+## Predviđanje sledećeg dela teksta
+
+Veliki jezički model (eng. _large language model_, LLM) u osnovi radi jednu stvar: na osnovu teksta koji je dobio, procenjuje šta bi trebalo da dođe sledeće. Izabere jedan komad teksta, doda ga na kraj, i ponovi postupak. Ceo odgovor nastaje tako, deo po deo.
+
+Zvuči skromno, ali da bi model dobro pogodio nastavak rečenice o, recimo, grešci u TypeScript kodu, mora da „nauči” mnogo toga o jeziku, kodu i svetu. To znanje stiče tokom treniranja na ogromnoj količini teksta.
+
+## Tokeni, a ne reči
+
+Model ne vidi tekst kao slova ni kao cele reči, nego kao **tokene**: delove reči, cele kraće reči, znakove interpunkcije. Ugrubo:
+
+```text
+"Pišem kod."  →  ["P", "iš", "em", " kod", "."]
+```
+
+Tačna podela zavisi od modela. Za programere je bitno dvoje:
+
+- **Cena i ograničenja se mere u tokenima.** API-ji naplaćuju po tokenu, a ograničenja dužine su izražena u tokenima.
+- **Jezici koji nisu engleski često troše više tokena** za isti sadržaj, pa je tekst na srpskom obično „skuplji” od istog teksta na engleskom.
+
+## Kontekstni prozor
+
+Model nema pamćenje u ljudskom smislu. Sve što „zna” o vašem razgovoru je tekst koji mu je poslat u tom trenutku: vaše poruke, njegovi prethodni odgovori, fajlovi koje ste priložili. To se zove **kontekstni prozor** i ima ograničenu veličinu.
+
+Zato asistent ponekad „zaboravi” nešto što ste rekli na početku dugog razgovora, i zato alati za programiranje toliko pažnje posvećuju tome koje fajlove i uputstva šalju modelu.
+
+## Zašto ume da izmisli stvari
+
+Model je učen da proizvede verovatan nastavak, ne da proveri da li je nešto tačno. Kad nema pouzdan odgovor, i dalje će napisati nešto što _zvuči_ ispravno: funkciju koja ne postoji, opciju koja je uklonjena u novoj verziji biblioteke, link koji vodi nigde. To se zove **halucinacija**.
+
+Nekoliko stvari smanjuje taj rizik:
+
+1. **Dati modelu prave izvore.** Dokumentacija, postojeći kod i poruke o greškama u kontekstu su bolji od oslanjanja na ono što je model naučio.
+2. **Tražiti da proveri sam sebe.** Alati koji mogu da pokrenu kod ili testove hvataju mnogo grešaka pre nego što ih vi vidite.
+3. **Proveriti sve što je bitno.** Naročito verzije, API-je i bezbednosne detalje.
+
+## Znanje ima datum
+
+Model je treniran na podacima do određenog trenutka. Sve što se desilo posle toga, nove verzije alata i promenjeni API-ji, ne zna osim ako mu to ne date u kontekstu. Ovaj sajt, na primer, koristi noviju verziju Next.js-a nego što bi model „po sećanju” očekivao, pa projekat ima uputstvo koje ga upućuje na lokalnu dokumentaciju.
+
+## Šta ovo znači u praksi
+
+Kad razumete da je LLM sistem koji predviđa tekst na osnovu onoga što mu je dato, većina saveta za rad sa njim postaje logična:
+
+- budite precizni u zahtevu, jer je zahtev deo konteksta,
+- dajte mu relevantne fajlove i primere,
+- ne očekujte da pamti ono što mu niste poslali,
+- proverite ono što je važno.
+
+Nije magija, ali je izuzetno koristan alat, pogotovo kad znate kako radi.

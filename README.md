@@ -19,6 +19,8 @@ npm run build   # produkcijski build (i provera tipova)
 title: "Naslov posta"
 description: "Kratak opis koji se vidi u listi i na društvenim mrežama"
 date: "2026-11-10"
+image: "/naslovna-slika.jpg"   # slika iz foldera public/ (opciono)
+tags: ["AI", "Alati"]         # prikazuju se na kartici (opciono)
 draft: false
 ---
 

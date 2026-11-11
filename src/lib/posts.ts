@@ -3,6 +3,7 @@ import path from "node:path";
 import matter from "gray-matter";
 
 const POSTS_DIR = path.join(process.cwd(), "src", "content", "posts");
+const WORDS_PER_MINUTE = 200;
 
 export type PostMeta = {
   slug: string;
@@ -10,11 +11,15 @@ export type PostMeta = {
   description: string;
   date: string;
   draft: boolean;
+  image?: string;
+  tags: string[];
+  readingMinutes: number;
 };
 
 function readPostMeta(slug: string): PostMeta {
   const file = fs.readFileSync(path.join(POSTS_DIR, `${slug}.mdx`), "utf-8");
-  const { data } = matter(file);
+  const { data, content } = matter(file);
+  const words = content.split(/\s+/).filter(Boolean).length;
 
   return {
     slug,
@@ -23,6 +28,9 @@ function readPostMeta(slug: string): PostMeta {
     // YAML parses unquoted dates as Date objects
     date: data.date instanceof Date ? data.date.toISOString().slice(0, 10) : String(data.date ?? ""),
     draft: data.draft === true,
+    image: typeof data.image === "string" ? data.image : undefined,
+    tags: Array.isArray(data.tags) ? data.tags.map(String) : [],
+    readingMinutes: Math.max(1, Math.round(words / WORDS_PER_MINUTE)),
   };
 }
 

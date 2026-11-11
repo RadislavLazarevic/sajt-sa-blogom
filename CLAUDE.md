@@ -23,9 +23,9 @@ There is no test framework configured yet.
 
 Personal tech blog in Serbian (Latin script), no database or CMS: content is MDX files in the repo.
 
-- **Posts** live in `src/content/posts/<slug>.mdx` with YAML frontmatter (`title`, `description`, `date` as `YYYY-MM-DD`, `draft`). The file name is the URL slug (`/blog/<slug>`). Adding a post = adding a file; nothing else needs to change. `draft: true` hides it everywhere.
+- **Posts** live in `src/content/posts/<slug>.mdx` with YAML frontmatter (`title`, `description`, `date` as `YYYY-MM-DD`, `draft`, optional `image` path under `public/` and `tags` array; reading time is computed). The file name is the URL slug (`/blog/<slug>`). Adding a post = adding a file; nothing else needs to change. `draft: true` hides it everywhere.
 - `src/lib/posts.ts` reads frontmatter with `gray-matter` via sync `fs` (predictable, so it's in the static shell without `"use cache"`). Pages render MDX via `@next/mdx` (`remark-gfm`, `remark-frontmatter` as string plugins for Turbopack) with dynamic `import(\`@/content/posts/${slug}.mdx\`)`.
-- Routes: `/` (intro + 5 latest), `/blog`, `/blog/[slug]`, `/o-meni` (content in `src/content/o-meni.mdx`), `/rss.xml`, `/sitemap.xml`, `/robots.txt`. Site name/URL in `src/lib/site.ts` (`NEXT_PUBLIC_SITE_URL` env var).
+- Routes: `/` (video hero + card grid of 8 latest, `PostGrid`), `/blog`, `/blog/[slug]`, `/o-meni` (content in `src/content/o-meni.mdx`), `/rss.xml`, `/sitemap.xml`, `/robots.txt`. Site name/URL in `src/lib/site.ts` (`NEXT_PUBLIC_SITE_URL` env var).
 - `export const dynamicParams` is not allowed with `cacheComponents`; unknown slugs use `notFound()`.
 - MDX prose styled with `@tailwindcss/typography` (`prose dark:prose-invert`).
 

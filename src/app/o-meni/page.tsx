@@ -8,8 +8,10 @@ export const metadata: Metadata = {
 
 export default function AboutPage() {
   return (
-    <div className="prose prose-zinc max-w-none dark:prose-invert">
-      <AboutContent />
+    <div className="mx-auto w-full max-w-3xl px-6 py-12">
+      <div className="prose prose-zinc max-w-none dark:prose-invert">
+        <AboutContent />
+      </div>
     </div>
   );
 }

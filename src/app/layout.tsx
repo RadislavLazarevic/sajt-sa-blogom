@@ -1,5 +1,6 @@
 import type { Metadata } from "next";
 import { Geist, Geist_Mono } from "next/font/google";
+import Footer from "@/components/Footer";
 import Header from "@/components/Header";
 import { siteConfig } from "@/lib/site";
 import "./globals.css";
@@ -39,15 +40,8 @@ export default function RootLayout({ children }: LayoutProps<"/">) {
     >
       <body className="min-h-full flex flex-col font-sans">
         <Header />
-        <main className="mx-auto w-full max-w-3xl flex-1 px-6 py-12">{children}</main>
-        <footer className="border-t border-black/[.08] dark:border-white/[.145]">
-          <div className="mx-auto flex w-full max-w-3xl items-center justify-between px-6 py-6 text-sm text-zinc-500">
-            <span>{siteConfig.name}</span>
-            <a href="/rss.xml" className="hover:text-foreground">
-              RSS
-            </a>
-          </div>
-        </footer>
+        <main className="flex flex-1 flex-col">{children}</main>
+        <Footer />
       </body>
     </html>
   );
