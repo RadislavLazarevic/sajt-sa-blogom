@@ -1,5 +1,6 @@
 import Link from "next/link";
 import Hero from "@/components/Hero";
+import Newsletter from "@/components/Newsletter";
 import PostGrid from "@/components/PostGrid";
 import { getAllPosts } from "@/lib/posts";
 
@@ -19,6 +20,8 @@ export default function Home() {
         </div>
         <PostGrid posts={posts.slice(0, 8)} />
       </section>
+
+      <Newsletter />
     </>
   );
 }
