@@ -25,7 +25,7 @@ body {
   color: var(--foreground);
 }
 
-/* Light header text while it sits over the dark home hero */
+/* Light header text while it sits over a dark hero (home page, blog posts) */
 body:has([data-hero]) .site-header {
   color: #ededea;
 }

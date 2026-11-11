@@ -1,5 +1,6 @@
 import Image from "next/image";
 import Link from "next/link";
+import CategoryBadge from "@/components/CategoryBadge";
 import { formatDate } from "@/lib/format";
 import type { PostMeta } from "@/lib/posts";
 
@@ -29,7 +30,7 @@ function PostCard({ post }: { post: PostMeta }) {
         )}
         <div className="absolute top-3 left-3 flex gap-2">
           {post.tags.slice(0, 2).map((tag) => (
-            <Badge key={tag}>{tag}</Badge>
+            <CategoryBadge key={tag} name={tag} />
           ))}
           <Badge>{post.readingMinutes} min</Badge>
         </div>
