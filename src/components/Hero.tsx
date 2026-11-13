@@ -1,4 +1,4 @@
-import { withBasePath } from "@/lib/site";
+import BackgroundVideo from "@/components/BackgroundVideo";
 import Link from "next/link";
 import LocalTime from "@/components/LocalTime";
 
@@ -9,16 +9,7 @@ export default function Hero({ postCount }: { postCount: number }) {
       // Pulls the section up under the transparent header (h-20)
       className="relative -mt-20 flex min-h-svh flex-col overflow-hidden bg-[#0b0b0b] text-[#ededea]"
     >
-      <video
-        className="absolute inset-0 h-full w-full object-cover"
-        src={withBasePath("/video.mp4")}
-        autoPlay
-        muted
-        loop
-        playsInline
-        preload="auto"
-        aria-hidden
-      />
+      <BackgroundVideo name="video" poster="/video-poster.jpg" />
       <div className="absolute inset-0 bg-[radial-gradient(ellipse_at_center,rgba(0,0,0,0.15)_0%,rgba(0,0,0,0.7)_100%)]" />
       <div className="absolute inset-0 bg-gradient-to-b from-black/50 via-transparent to-black/70" />
 

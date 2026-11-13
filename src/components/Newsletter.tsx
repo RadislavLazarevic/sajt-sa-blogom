@@ -1,20 +1,11 @@
-import { withBasePath } from "@/lib/site";
+import BackgroundVideo from "@/components/BackgroundVideo";
 import Link from "next/link";
 import NewsletterForm from "@/components/NewsletterForm";
 
 export default function Newsletter() {
   return (
     <section className="relative overflow-hidden bg-[#0b0b0b] text-[#ededea]">
-      <video
-        className="absolute inset-0 h-full w-full object-cover"
-        src={withBasePath("/newsletter.mp4")}
-        autoPlay
-        muted
-        loop
-        playsInline
-        preload="metadata"
-        aria-hidden
-      />
+      <BackgroundVideo name="newsletter" lazy />
       <div className="absolute inset-0 bg-black/45" />
       <div className="absolute inset-0 bg-gradient-to-b from-black/40 via-transparent to-black/75" />
 
