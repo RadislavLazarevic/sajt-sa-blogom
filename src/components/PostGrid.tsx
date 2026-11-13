@@ -3,6 +3,7 @@ import Link from "next/link";
 import CategoryBadge from "@/components/CategoryBadge";
 import { formatDate } from "@/lib/format";
 import type { PostMeta } from "@/lib/posts";
+import { withBasePath } from "@/lib/site";
 
 function Badge({ children }: { children: React.ReactNode }) {
   return (
@@ -21,7 +22,7 @@ function PostCard({ post }: { post: PostMeta }) {
       <div className="relative aspect-[4/3] overflow-hidden rounded-[3px] bg-white/5">
         {post.image && (
           <Image
-            src={post.image}
+            src={withBasePath(post.image)}
             alt=""
             fill
             sizes="(min-width: 1280px) 22vw, (min-width: 768px) 45vw, 90vw"

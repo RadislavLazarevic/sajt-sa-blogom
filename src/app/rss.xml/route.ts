@@ -10,6 +10,9 @@ function escapeXml(value: string): string {
     .replace(/'/g, "&apos;");
 }
 
+// Required by output: "export" so it is written to a static file at build time
+export const dynamic = "force-static";
+
 export function GET() {
   const items = getAllPosts()
     .map((post) => {

@@ -1,6 +1,6 @@
 import Link from "next/link";
 import { getAllPosts } from "@/lib/posts";
-import { siteConfig } from "@/lib/site";
+import { siteConfig, withBasePath } from "@/lib/site";
 
 // Evaluated once at build time, so it stays out of request-time rendering
 const YEAR = new Date().getFullYear();
@@ -47,8 +47,8 @@ const pageLinks = [
 ];
 
 const resourceLinks = [
-  { href: "/rss.xml", label: "RSS feed" },
-  { href: "/sitemap.xml", label: "Mapa sajta" },
+  { href: withBasePath("/rss.xml"), label: "RSS feed" },
+  { href: withBasePath("/sitemap.xml"), label: "Mapa sajta" },
 ];
 
 const linkClass = "text-[#ededea]/55 transition-colors hover:text-[#ededea]";
@@ -144,7 +144,7 @@ export default function Footer() {
               </Link>
             </li>
             <li>
-              <a href="/rss.xml" className="transition-colors hover:text-[#ededea]">
+              <a href={withBasePath("/rss.xml")} className="transition-colors hover:text-[#ededea]">
                 RSS
               </a>
             </li>

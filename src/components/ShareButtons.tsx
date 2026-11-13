@@ -21,7 +21,7 @@ const networks = [
 ];
 
 export default function ShareButtons({ slug, title }: { slug: string; title: string }) {
-  const url = encodeURIComponent(new URL(`/blog/${slug}`, siteConfig.url).toString());
+  const url = encodeURIComponent(`${siteConfig.url}/blog/${slug}`);
   const text = encodeURIComponent(title);
 
   return (

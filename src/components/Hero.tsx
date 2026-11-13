@@ -1,3 +1,4 @@
+import { withBasePath } from "@/lib/site";
 import Link from "next/link";
 import LocalTime from "@/components/LocalTime";
 
@@ -10,7 +11,7 @@ export default function Hero({ postCount }: { postCount: number }) {
     >
       <video
         className="absolute inset-0 h-full w-full object-cover"
-        src="/video.mp4"
+        src={withBasePath("/video.mp4")}
         autoPlay
         muted
         loop

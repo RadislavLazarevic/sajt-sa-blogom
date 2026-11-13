@@ -6,6 +6,7 @@ import CategoryBadge from "@/components/CategoryBadge";
 import ShareButtons from "@/components/ShareButtons";
 import { formatDate } from "@/lib/format";
 import { getAllPosts, getPostMeta } from "@/lib/posts";
+import { withBasePath } from "@/lib/site";
 
 export function generateStaticParams() {
   return getAllPosts().map((post) => ({ slug: post.slug }));
@@ -48,7 +49,7 @@ export default async function PostPage({ params }: PageProps<"/blog/[slug]">) {
         className="relative -mt-20 flex h-[67svh] min-h-80 items-center justify-center overflow-hidden bg-[#10142a]"
       >
         {post.image && (
-          <Image src={post.image} alt="" fill priority sizes="100vw" className="object-cover" />
+          <Image src={withBasePath(post.image)} alt="" fill priority sizes="100vw" className="object-cover" />
         )}
         <div className="absolute inset-0 bg-black/60" />
         <div className="relative z-10 flex max-w-4xl flex-col items-center gap-5 px-6 pt-20">

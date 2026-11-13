@@ -1,3 +1,4 @@
+import { withBasePath } from "@/lib/site";
 import Link from "next/link";
 import NewsletterForm from "@/components/NewsletterForm";
 
@@ -6,7 +7,7 @@ export default function Newsletter() {
     <section className="relative overflow-hidden bg-[#0b0b0b] text-[#ededea]">
       <video
         className="absolute inset-0 h-full w-full object-cover"
-        src="/newsletter.mp4"
+        src={withBasePath("/newsletter.mp4")}
         autoPlay
         muted
         loop
